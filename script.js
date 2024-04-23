@@ -4,13 +4,11 @@
 
 
 $(function () {
-  // TODO: Add code to display the current date in the header of the page.
+  // Add code to display the current date in the header of the page.
   function displayDate() {
     let currentDate = dayjs().format('dddd, MMMM D, YYYY');
     $('#currentDay').text(currentDate)
   }
-
-
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -19,8 +17,9 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
+
+
   let $saveBtn = $('<button>').addClass('btn saveBtn col-2 col-md-1').attr('aria-label', 'save').html('<i class="fas fa-save" aria-hidden="true"></i>');
-  
 
 
   // TODO: Add code to apply the past, present, or future class to each time
@@ -35,9 +34,20 @@ $(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
+  function getEvents() {
+    $('.time-block').each(function () {
+      let eventId = $(this).attr('id');
+      var savedEvent = localStorage.getItem(eventId);
+
+      if (savedEvent) {
+        $(this).find('.description').val(savedEvent);
+      }
+    })
+  }
 
 
-
-
+  // Functions...ASSEMBLE! 🛡️🏹
   displayDate();
+  timeBlocks();
+  getEvents();
 });
