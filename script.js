@@ -46,7 +46,7 @@ $(function () {
       }
     }
   }
-  
+
   // Save button functionality
   $(".container-fluid").on("click", ".saveBtn", function () {
     let eventId = $(this).closest(".time-block").attr("id");
